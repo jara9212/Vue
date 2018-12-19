@@ -6,6 +6,9 @@ Vue.use(Vuex)
 import productsModule from './modules/products'
 
 export default new Vuex.Store({
+    state: {
+
+    },
     modules: {
         products: productsModule
     }
