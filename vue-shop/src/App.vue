@@ -1,6 +1,9 @@
 <template>
   <div id="app">
-    <product-list></product-list>
+    <b-container>
+      <product-list></product-list>
+    </b-container>
+    
   </div>
 </template>
 

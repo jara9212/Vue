@@ -5,7 +5,14 @@
             :list="products"
             :per="perPage"
         >
-            <p v-for="product in paginated('products')" :key="product.id">{{product.name}}</p>
+            <!--<p v-for="product in paginated('products')" :key="product.id">{{product.name}}</p>-->
+            <b-card-group columns>
+                <product-item
+                    v-for="product in paginated('products')" :key="product.id"
+                    :product="product"
+                    @addToCart="addProductToCart"
+                ></product-item>
+            </b-card-group>
         </paginate>
         <paginate-links
             for="products"
@@ -20,7 +27,11 @@
 </template>
 <script>
 import { mapActions, mapMutations, mapState } from 'vuex'
+import ProductItem from './ProductItem'
 export default {
+    components: {
+        ProductItem
+    },
     mounted() {
         this.fetchProducts()
     },
@@ -34,7 +45,10 @@ export default {
         ...mapState('products',['products'])
     },
     methods: {
-        ...mapActions('products',['fetchProducts'])
+        ...mapActions('products',['fetchProducts']),
+        addProductToCart(product){
+
+        }
     }
 }
 </script>
